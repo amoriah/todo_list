@@ -11,18 +11,18 @@ function App() {
   const [todo, setTodo] = useState([
     // {
     //   id: 1,
-    //   title: 'first todo',
+    //   title: 'Your first task',
     //   status: true
     // },
     // {
     //   id: 2,
-    //   title: 'second todo',
-    //   status: true
+    //   title: 'Your second todo',
+    //   status: false
     // },
     // {
     //   id: 3,
-    //   title: 'third todo',
-    //   status: false
+    //   title: 'Your third todo',
+    //   status: true
     // }
   ])
 

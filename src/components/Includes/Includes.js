@@ -7,7 +7,9 @@ function Includes() {
 	return (
 		<Row>
 			<Col>
+			<div className={s.header}>
 				<div className={s.root}>Todo list</div>
+			</div>
 			</Col>
 		</Row>
 	);
