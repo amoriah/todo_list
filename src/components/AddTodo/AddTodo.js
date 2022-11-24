@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Row, Button, FormControl } from 'react-bootstrap';
-import {v1 as uuidv1} from 'uuid'
+import { v1 as uuidv1 } from 'uuid';
 import s from './AddTodo.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus} from '@fortawesome/free-solid-svg-icons'
@@ -12,15 +12,13 @@ function AddTodo ( {todo, setTodo} ) {
 	function saveTodo() {
 		if (value)
 		{
-			// let newTodo = {
-			// 	id: uuid.v4,
-			// 	title: value,
-			// 	status: true
-			// }
 			setTodo(
 				[...todo, {
-					id: uuidv1,
+					id: uuidv1(),
 					title: value,
+					// description: desc_value,
+					// finish_date: date_value,
+					// file: file_value,
 					status: true
 				}]
 			)
@@ -32,7 +30,7 @@ function AddTodo ( {todo, setTodo} ) {
 		<Row>
 			<Col className={s.addTodoForm}>
 			<FormControl placeholder='add task' value={value} onChange={ (e) => setValue(e.target.value) }/>
-			<Button className={s.btn} variant='warning' onClick={ saveTodo }><FontAwesomeIcon icon={ faPlus } /></Button>
+			<Button className={s.btn} variant='warning' onClick={ saveTodo }><FontAwesomeIcon icon={ faPlus } size="xl"/></Button>
 			</Col>
 		</Row>
 	);

@@ -8,7 +8,10 @@
 	flex-direction: row;
 	margin: 24px;
 	padding: 6px;
-}
+
+  background-color: #f6f6f6;
+} 
+
 
 .listItems:hover {
 	background: #dcdcdc;
@@ -16,16 +19,11 @@
 }
 
 .close {
-	color: gray;
+	color: #dfb6b0;
 	text-decoration: line-through;
 }
 
 .filter {
 	display: flex;
 	justify-content: center;
-	/* padding: 20px; */
-}
-
-.btns {
-	
 }

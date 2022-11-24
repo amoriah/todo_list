@@ -1,7 +1,7 @@
 .header {
 	display: flex;
 	align-items: center;
-	justify-content:center
+	justify-content:center;
 }
 
 .root {
@@ -10,8 +10,8 @@
 	border-radius: 40px;
 	font-size: 24px;
 	margin: 20px;
-	color: white;
-	background-color: rgb(77, 192, 154);
+	color: black;
+	background-color: rgb(210, 229, 200);
 	display: flex;
 	align-items: center;
 	justify-content:center

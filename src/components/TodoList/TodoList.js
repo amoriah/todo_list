@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Button, FormControl, ButtonGroup } from 'react-bootstrap';
 import s from './TodoList.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrash, faEdit, faLock, faLockOpen} from '@fortawesome/free-solid-svg-icons'
+import { faSave, faTrash, faEdit, faCheck, faRepeat } from '@fortawesome/free-solid-svg-icons'
 
 function TodoList ({ todo, setTodo }) {
 
@@ -15,16 +15,16 @@ function TodoList ({ todo, setTodo }) {
 	}, [todo])
 
 	function todoFilter(status) {
-		if (status == 'all') {
+		if (status === 'all') {
 			setFiltered(todo);
 		} else {
-			let newTodo = [...todo].filter( item => item.status  === status)
+			let newTodo = [...todo].filter(item => item.status === status)
 			setFiltered(newTodo);
 		}
 	}
 
 	function deleteTodo(id) {
-		let newTodo = [...todo].filter(item => item.id != id);
+		let newTodo = [...todo].filter(item => item.id !== id);
 		setTodo(newTodo);
 	}
 
@@ -45,7 +45,7 @@ function TodoList ({ todo, setTodo }) {
 
 	function saveTodo(id) {
 		let newTodo = [...todo].map(item => {
-			if (item.id == id) {
+			if (item.id === id) {
 				item.title = value
 			}
 			return item;
@@ -55,7 +55,7 @@ function TodoList ({ todo, setTodo }) {
 	}
 
 	return (
-		<div>
+	<div>
 		<Row>
 			<Col className={s.filter}>
 			<ButtonGroup className={s.btns} aria-label="Basic example">
@@ -65,37 +65,41 @@ function TodoList ({ todo, setTodo }) {
    			</ButtonGroup>
 			</Col>
 		</Row>
-			{
-				filtered.map( item => (
-				<div className={s.listItems} key={item.id}>
-					{
-					edit == item.id ? 
-						<div>
-							<FormControl value={value} onChange={ (e)=>setValue(e.target.value) }/>
-						</div>
-						:
-						<div className={ !item.status ? s.close : ''}>{ item.title}</div>
-					}
-					{
-					edit == item.id ? 
-						<div>
-							<Button variant="success" onClick={()=>saveTodo(item.id)}><FontAwesomeIcon icon={ faSave } size="sm" /></Button>
-						</div>
-						:
-						<div>
-							<Button className={s.btn} variant="danger" onClick={ () => deleteTodo(item.id) } size="sm"><FontAwesomeIcon icon={ faTrash } /></Button>
-							<Button className={s.btn} onClick={ () => editTodo(item.id, item.title) } size="sm"><FontAwesomeIcon icon={ faEdit } /></Button>
-							<Button className={s.btn} variant="secondary" onClick={ () => statusTodo(item.id) } size="sm">
-							{
-								item.status ? <FontAwesomeIcon icon={ faLock } /> :  <FontAwesomeIcon icon={ faLockOpen } />
-							}
-							 </Button>
-						</div>
-					}
-				</div>
-			))
-			}
-		</div>
+		{
+			filtered.map( item => (
+			<div className={ s.listItems } key={ item.id }>
+				{
+				edit === item.id ? 
+					<div>
+						<FormControl value={ value } onChange={ (e)=>setValue(e.target.value) }/>
+					</div>
+					:
+					<div className={ !item.status ? s.close : '' }>{ item.title }</div>
+				}
+				{
+				edit === item.id ? 
+					<div>
+						<Button variant="success" onClick={ ()=>saveTodo(item.id) }><FontAwesomeIcon icon={ faSave } size="sm" /></Button>
+					</div>
+					:
+					<div>
+						<Button className={ s.btn } variant="danger" onClick={ () => deleteTodo(item.id) } size="sm">
+							<FontAwesomeIcon icon={ faTrash } />
+						</Button>
+						<Button className={s.btn} onClick={ () => editTodo(item.id, item.title) } size="sm">
+							<FontAwesomeIcon icon={ faEdit } />
+						</Button>
+						{
+							item.status ?  <Button className={s.btn} variant="success" onClick={ () => statusTodo(item.id) } size="sm"><FontAwesomeIcon icon={ faCheck } /></Button>
+							:
+							<Button className={s.btn} variant="warning" onClick={ () => statusTodo(item.id) } size="sm"><FontAwesomeIcon icon={ faRepeat } /></Button>
+						}
+					</div>
+				}
+			</div>
+		))
+		}
+	</div>
 	);
 }
 
