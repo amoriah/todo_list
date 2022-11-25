@@ -8,10 +8,10 @@ import { faPlus} from '@fortawesome/free-solid-svg-icons'
 function AddTodo ( {todo, setTodo} ) {
 
 	const [value, setValue] = useState('');
+	// const [desc_value, setDescription] = useState('');
 
 	function saveTodo() {
-		if (value)
-		{
+		if (value) 		{
 			setTodo(
 				[...todo, {
 					id: uuidv1(),
@@ -30,7 +30,7 @@ function AddTodo ( {todo, setTodo} ) {
 		<Row>
 			<Col className={s.addTodoForm}>
 			<FormControl placeholder='add task' value={value} onChange={ (e) => setValue(e.target.value) }/>
-			<Button className={s.btn} variant='warning' onClick={ saveTodo }><FontAwesomeIcon icon={ faPlus } size="xl"/></Button>
+			<Button className={s.btn} variant='warning' onClick={ saveTodo }><FontAwesomeIcon icon={ faPlus } size="2xl"/></Button>
 			</Col>
 		</Row>
 	);
