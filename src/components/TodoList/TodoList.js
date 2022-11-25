@@ -74,7 +74,11 @@ function TodoList ({ todo, setTodo }) {
 						<FormControl value={ value } onChange={ (e)=>setValue(e.target.value) }/>
 					</div>
 					:
-					<div className={ !item.status ? s.close : '' }>{ item.title }</div>
+					<div className={ !item.status ? s.close : '' }>
+						<h2>{item.title}</h2>
+						<p>{item.desc}</p>
+						<time>{item.data}</time>
+					</div>
 				}
 				{
 				edit === item.id ? 
