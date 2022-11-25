@@ -8,3 +8,10 @@
 .btn {
 	margin-left: 13px;
 }
+
+#formFileLg {
+	height: 45px;
+	width: 280px;
+	font-size: 18px;
+
+}

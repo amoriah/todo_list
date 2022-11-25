@@ -33,9 +33,8 @@ function AddTodo ( {todo, setTodo} ) {
 			<FormControl placeholder='description' value1={value1} onChange={ (e) => setValue1(e.target.value) }/>
 			<FormControl placeholder='deadline' type="data" value2={value2} onChange={ (e) => setValue2(e.target.value) }/>
 
-			<FormGroup controlId="formFileLg" className="mb-3">
-        {/* <FormLabel>Large file input example</FormLabel> */}
-        	<FormControl type="file"  />
+			<FormGroup controlId="formFileLg" className={s.mb-3}>
+          		<FormControl type="file" size="lg"id={s.formFileLg}/>
      		 </FormGroup>
 
 			<Button className={s.btn} variant='warning' onClick={ saveTodo }><FontAwesomeIcon icon={ faPlus } size="2xl"/></Button>

@@ -7,6 +7,8 @@ import { faSave, faTrash, faEdit, faCheck, faRepeat } from '@fortawesome/free-so
 function TodoList ({ todo, setTodo }) {
 
 	const [edit, setEdit] = useState(null);
+	const [desc, setDesc] = useState('');
+	const [data, setData] = useState('');
 	const [value, setValue] = useState('');
 	const [filtered, setFiltered] = useState(todo);
 
@@ -28,9 +30,11 @@ function TodoList ({ todo, setTodo }) {
 		setTodo(newTodo);
 	}
 
-	function editTodo(id, title) {
+	function editTodo(id, title, desc, data) {
 		setEdit(id);
 		setValue(title);
+		setDesc(desc);
+		setData(data);
 	}
 
 	function statusTodo(id) {
@@ -90,7 +94,7 @@ function TodoList ({ todo, setTodo }) {
 						<Button className={ s.btn } variant="danger" onClick={ () => deleteTodo(item.id) } size="sm">
 							<FontAwesomeIcon icon={ faTrash } />
 						</Button>
-						<Button className={s.btn} onClick={ () => editTodo(item.id, item.title) } size="sm">
+						<Button className={s.btn} onClick={ () => editTodo(item.id, item.title, item.desc, item.data) } size="sm">
 							<FontAwesomeIcon icon={ faEdit } />
 						</Button>
 						{
