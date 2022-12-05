@@ -1,4 +1,4 @@
-[todo_list](todo_list.png)
+![todo_list](todo_list.png)
 
 # Getting Started with Create React App
 
